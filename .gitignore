@@ -1,0 +1,54 @@
+# Byte-compiled files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+.env.*
+
+# Virtual environment directories
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Pytest cache
+.pytest_cache/
+
+# Coverage reports
+.coverage
+*.cover
+
+# Mypy and other type checker files
+.mypy_cache/
+.dmypy.json
+.dmypy.json.*/
+
+# IDE / editor directories
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Python egg files
+*.egg
+*.egg-info
+
+# Other temporary files
+*~
+*.swp
+*.tmp
+
+# Text files
+*.txt
