@@ -52,3 +52,7 @@ build/
 
 # Text files
 *.txt
+
+# the testing data
+sim_data/
+sim_data_json/

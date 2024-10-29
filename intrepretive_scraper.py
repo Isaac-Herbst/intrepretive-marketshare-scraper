@@ -2,7 +2,7 @@
 Intrepretive Market Share Simulation web scraper
 
 Authored by: Isaac Herbst
-Last updated: 10/23/2024
+Last updated: 10/28/2024
 
 This is a web scraper for Intrepretive's Market Share simulation found here:
 https://www.interpretive.com/business-simulations/marketing-principles-simulation/
@@ -78,7 +78,8 @@ max_period = len(period_options) - 1  # 0-based indexing
 print(f"Maximum period extracted: {max_period}")
 
 # Holds all the scraped data
-os.makedirs("sim_data", exist_ok=True)
+folder = "sim_data_json"
+os.makedirs(folder, exist_ok=True)
 
 """ 
 Both of the timer.sleep() calls may need changed based on internet.
@@ -89,14 +90,14 @@ the data relatively fast. If crashes are frequent, changing those to
 for module_name in module_names:
     print(f"Loading module: {module_name}")
     driver.execute_script(f"loadModFull('{module_name}', true);")
-    time.sleep(.7)
+    time.sleep(1)
 
     # Loop through each year, increasing the period
     for year in range(max_period + 1):
         print(f"Setting period to: {year}")
         driver.execute_script(f"document.getElementById('period').value = '{year}';")
         driver.execute_script("periodMod();")
-        time.sleep(.7)
+        time.sleep(1)
 
         # Extract content from the DOM element contentPane
         content_pane = driver.find_element(By.ID, "contentPane")
@@ -104,7 +105,7 @@ for module_name in module_names:
         content_text = content_pane.text.strip()
 
         # Save by year
-        year_folder = os.path.join("sim_data", f"Year {year}")
+        year_folder = os.path.join(folder, f"Year {year}")
         os.makedirs(year_folder, exist_ok=True)
 
         json_file_name = f"{mod_header}.json"
